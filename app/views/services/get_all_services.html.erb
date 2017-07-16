@@ -1,0 +1,43 @@
+	        <% @services.each do |service| %>
+<!--           <div class="row">
+            <div class="col-md-2">
+              <%= image_tag service.image.url(:thumb) %>
+            </div>
+            <div class="col-md-7">
+              <h4>
+                <%= service.title %>
+              </h4>
+            </div>
+            <div class="col-md-3">
+              <%= link_to "Update", edit_service_path(service), class: "btn btn-default pull-right" %>
+            </div>
+          </div>
+          <hr>
+        <% end %> -->
+	<div class="col-md-12">
+	    <div>
+	    <% @services.each do |service| %>
+          <div class="row card col-md-4" style="    margin-top: 10px;">
+          	<!-- <%= service.title %> -->
+          	 <div class="card-block" style=" max-width:78%">
+          	 	
+          	 	<div style="margin: 5%">
+              <%= image_tag service.image.url(:small), size: '230x180' %>
+		            <h4 class="card-title" > <%= service.title %></h4>
+		            <p class="card-text" >Some quick example text to build on the  title and make up the bulk of the 's content.</p>
+		            <%= link_to "Order", service_path(service), target: "_blank", class: "btn btn-primary btn_center"%>
+
+	            </div>
+	        </div>
+          </div>
+        <% end %>
+
+	        <!-- <img class="card-img-top" src="..." alt=" image cap"> -->
+	        <!-- <div class="card-block col-md-3">
+	            <h4 class="card-title"> title</h4>
+	            <p class="card-text">Some quick example text to build on the  title and make up the bulk of the 's content.</p>
+	            <a href="#" class="btn btn-primary">Go somewhere</a>
+	        </div> -->
+	    </div>
+	</div>
+</table>

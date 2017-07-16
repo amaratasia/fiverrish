@@ -1,0 +1,33 @@
+<div class="panel panel-default">
+  <div class="panel-body">
+    <%= form_for ([@service, @service.orders.new]) do |f| %>
+      <%= f.hidden_field :service_id, value: @service.id %>
+      <%= f.hidden_field :price, value: @service.price %>
+      <center>
+        <%= f.submit "Order Now (Rs. #{@service.price})", class: "btn btn-primary btn-lg btn-order" %>
+      </center>
+      <hr>
+      <h5 class="pull-left">
+        Basic Gig Quantity
+      </h5>
+      <div class="form-group pull-right">
+        <div class="select-control-order-form">
+          <%= f.select(:quantity, options_for_select( [
+            ["1 (Rs. #{@service.price*1})", 1],
+            ["2 (Rs. #{@service.price*2})", 2],
+            ["3 (Rs. #{@service.price*3})", 3],
+            ["4 (Rs. #{@service.price*4})", 4],
+            ["5 (Rs. #{@service.price*5})", 5] ], {id: "quantity"} ) ) %>
+        </div>
+      </div>
+    <% end %>
+  </div>
+</div>
+
+<script type="text/javascript">
+  $(document).ready(function() {
+     $("select").bind("change",function() {
+       $('.btn-order').html('Order Now - ' + $("select option:selected").html());
+     });
+ })
+</script>

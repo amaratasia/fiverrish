@@ -1,0 +1,164 @@
+@import "bootstrap-sprockets";
+@import "bootstrap";
+
+body {
+  background-color: #f7f7f7;
+}
+.navbar {
+  margin-bottom: 0px;
+}
+
+.navbar-avatar {
+  width: 22px;
+}
+
+.btn, .btn:active, .btn-primary:active, .btn-default:active, .btn.active, .btn:focus, .btn:hover, .btn-navbarcustom  {
+	background-color: #00b22d;
+	background: -webkit-linear-gradient(#35c350, #03b525);
+    background: -moz-linear-gradient(#35c350, #03b525);
+    background: -o-linear-gradient(#35c350, #03b525);
+    background: linear-gradient(#35c350, #03b525);
+    -webkit-transition: color 0.2s, background-color 0.2s, box-shadow 0.2s, border 0.2s;
+    -moz-transition: color 0.2s, background-color 0.2s, box-shadow 0.2s, border 0.2s;
+    -o-transition: color 0.2s, background-color 0.2s, box-shadow 0.2s, border 0.2s;
+    transition: color 0.2s, background-color 0.2s, box-shadow 0.2s, border 0.2s;
+    -webkit-border-radius: 3px;
+    -moz-border-radius: 3px;
+    border-radius: 3px;
+    text-shadow: 0 -1px 1px rgba(0,0,0,0.2);
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
+    color: #fff !important;
+    border: 1px solid #00b22d;
+}
+
+.btn-primary {
+	font-size: 16px;
+	font-weight: 700;
+	padding: 15px 35px;
+	margin: 0;
+	display: inline-block;
+}
+
+.btn-navbarcustom{
+  margin-top: 8px;
+  margin-right: 12px;
+}
+
+label {
+	font-size: 17px;
+	font-weight: 500;
+	color: #333;
+	text-transform: uppercase;
+}
+
+select {
+	background-color: #fff;
+	border: 1px solid #ccc;
+	border-radius: 2px;
+	padding: 10px;
+	width: 100px;
+	appearance: none;
+	-moz-appearance: none;
+	-webkit-appearance: none;
+}
+
+.select-control {
+	font-size: 16px;
+	position: relative;
+	display: block;
+}
+
+.select-control:before {
+	content: '\25bc';
+	font-size: 16px;
+	top: 10px;
+	left: 80px;
+	position: absolute;
+	color: #ccc;
+	transform: scale(0.84, 0.42);
+	pointer-events:none;
+}
+
+.hero {
+	background: image-url('header-bg.jpg') no-repeat center center fixed;
+	-webkit-background-size: cover;
+	-moz-background-size: cover;
+	-o-background-size: cover;
+	background-size: cover;
+	height: 500px;
+	text-align: center;
+}
+
+.hero-heading {
+	color: #fff;
+	margin-top: 100px;
+	font-size: 37px;
+	font-weight: 600;
+}
+
+.hero-heading p {
+	font-weight: 400;
+	font-size: 24px;
+}
+
+.section h1 {
+	margin: 40px 0px;
+	text-align: center;
+}
+
+.gig-card {
+	background-color: #fff;
+	width: 228px;
+	height: 275px;
+	border: 1px #e5e5e5 solid;
+	margin: 0 auto 20px auto;
+	padding: 0;
+}
+
+.gig-card h4 {
+	padding: 10px;
+	font-weight: 400;
+}
+
+.gig-card h3 {
+	color: #00b22d;
+	padding: 0px 10px;
+	font-size: 19px;
+}
+
+.auth-form {
+  margin-top: 50px;
+  background: white;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  padding: 10px 30px;
+}
+
+.panel-default .panel-heading {
+  background-color: white;
+}
+
+.select-control-order-form {
+  font-size: 12px;
+  position: relative;
+  display: block;
+}
+
+.select-control-order-form:before {
+	content: '\25bc';
+	font-size: 16px;
+	top: 10px;
+	left: 80px;
+	position: absolute;
+	color: #ccc;
+	transform: scale(0.84, 0.42);
+	pointer-events:none;
+}
+
+.btn_center {
+	display: flex;
+  	align-items: center;
+  	justify-content: center;
+}
