@@ -1,0 +1,17 @@
+<% @services.each do |service| %>
+	<div class="col-md-12">
+	    <div>
+	    <% @services.each do |service| %>
+          <div class="row card col-md-4" style="    margin-top: 10px;">
+          	 <div class="card-block" style=" max-width:78%">
+          	 	<div style="margin: 5%">
+                <%= image_tag service.image.url(:small), size: '230x180' %>
+		            <h4 class="card-title" > <%= service.title %></h4>
+		            <%= link_to "Order", service_path(service), target: "_blank", class: "btn btn-primary btn_center"%>
+	            </div>
+	        </div>
+          </div>
+        <% end %>
+	    </div>
+	</div>
+<% end %>

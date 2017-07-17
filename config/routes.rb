@@ -2,7 +2,9 @@ Rails.application.routes.draw do
   devise_for :users
   root 'pages#home'
   resources :users, only: [:show]
-  resources :services
+  resources :services do
+    get :get_all_services, :on => :collection
+  end
 
   resources :services do
     resources :orders, only: [:create]

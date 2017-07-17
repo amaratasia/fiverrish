@@ -1,5 +1,5 @@
 class ServicesController < ApplicationController
-  before_action :authenticate_user!, except: [:show]
+  before_action :authenticate_user!, except: [:show, :get_all_services]
   before_action :set_service, only: [:show, :edit, :update]
   def index
     @services = current_user.services
@@ -14,6 +14,16 @@ class ServicesController < ApplicationController
 
   def create
     # TODO: Save the newly created service. Redirect to an appropriate page if save fails.
+    @service = Service.new(service_params)
+    respond_to do |format|
+      if @service.save
+        format.html { redirect_to @service, notice: 'Service was successfully created.' }
+        format.json { render :show, status: :created, location: @service }
+      else
+        format.html { render :new }
+        format.json { render json: @service.errors, status: :unprocessable_entity }
+      end
+    end
   end
 
   def edit
@@ -23,8 +33,18 @@ class ServicesController < ApplicationController
     # TODO: Save the updated service. Redirect to an appropriate page if save fails.
   end
 
+  def get_all_services
+    @services = Service.all
+  end
+
   private
   def set_service
     @service = Service.find(params[:id])
   end
+
+  def service_params
+    params[:service][:user_id] = current_user.id
+    params.require(:service).permit(:id, :title, :description, :price, :delivery_time, :revisions, :requirements, :created_at, :updated_at,:image, :user_id)
+  end
+
 end

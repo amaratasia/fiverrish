@@ -1,4 +1,4 @@
-<div class="hero">
+<div class="hero" style='margin: -15px;'>
   <div class="container">
     <div class="row">
       <div class="hero-heading">
@@ -28,49 +28,22 @@
     Newest Gigs
   </h1>
   <div class="row">
-    <div class="col-md-3">
-      <div class="gig-card">
-        <%= image_tag 'blog.jpg'%>
-        <h4>
-          I will write 300 word blog posts
-        </h4>
-        <h3>
-          Rs. 500
-        </h3>
+    <% @gigs.each do |gig| %>
+      <div class="col-md-3">
+        <div class="gig-card">
+          <%= image_tag gig.image.url(:small), size: '225x150' %>
+          <div style="min-height: 70px;">
+            <h4>
+              <%= link_to gig.title, service_path(gig)%>
+            </h4>
+          </div>
+          <div>
+          <h3>
+            Rs. <%= gig.price %>
+          </h3>
+          </div>
+        </div>
       </div>
-    </div>
-    <div class="col-md-3">
-      <div class="gig-card">
-        <%= image_tag 'data.jpg'%>
-        <h4>
-          I will be your virtual assistant for data entry
-        </h4>
-        <h3>
-          Rs. 500
-        </h3>
-      </div>
-    </div>
-    <div class="col-md-3">
-      <div class="gig-card">
-        <%= image_tag 'copywrite.jpg'%>
-        <h4>
-          I will copywrite for your website
-        </h4>
-        <h3>
-          Rs. 500
-        </h3>
-      </div>
-    </div>
-    <div class="col-md-3">
-      <div class="gig-card">
-        <%= image_tag 'lyrics.jpg'%>
-        <h4>
-          I will write a song for your lyrics
-        </h4>
-        <h3>
-          Rs. 500
-        </h3>
-      </div>
-    </div>
+    <% end %>
   </div>
 </div>

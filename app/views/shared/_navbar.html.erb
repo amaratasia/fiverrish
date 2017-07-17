@@ -19,6 +19,7 @@
         </div>
         <button type="submit" class="btn btn-default">Submit</button>
       </form>
+      <%= link_to "Show All Service", get_all_services_services_path, class: "btn btn-default", :style => 'margin-top: 8px;'%>
       <ul class="nav navbar-nav navbar-right">
         <% if (user_signed_in?) %>
           <li class="dropdown">

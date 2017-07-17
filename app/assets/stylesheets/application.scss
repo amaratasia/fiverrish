@@ -156,3 +156,18 @@ select {
 	transform: scale(0.84, 0.42);
 	pointer-events:none;
 }
+
+.btn_center {
+	display: flex;
+  	align-items: center;
+  	justify-content: center;
+}
+
+.card-block h4 {
+	min-height: 30px;
+	font-size: 15px;
+}
+.gig-card h4 {
+	min-height: 30px;
+	font-size: 15px;
+}
