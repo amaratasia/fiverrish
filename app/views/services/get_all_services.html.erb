@@ -7,7 +7,7 @@
           	 	<div style="margin: 5%">
                 <%= image_tag service.image.url(:small), size: '230x180' %>
 		            <h4 class="card-title" > <%= service.title %></h4>
-		            <%= link_to "Order", service_path(service), target: "_blank", class: "btn btn-primary btn_center"%>
+		            <%= link_to "Order", new_service_order_path(service), target: "_blank", class: "btn btn-primary btn_center"%>
 	            </div>
 	        </div>
           </div>
