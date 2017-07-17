@@ -128,6 +128,10 @@ select {
 	font-size: 19px;
 }
 
+.gig-card .gig-card-details {
+	min-height: 70px;
+}
+
 .auth-form {
   margin-top: 50px;
   background: white;
@@ -170,4 +174,7 @@ select {
 .gig-card h4 {
 	min-height: 30px;
 	font-size: 15px;
+}
+.card-block{
+	 max-width:78%
 }

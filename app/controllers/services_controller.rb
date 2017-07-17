@@ -33,7 +33,7 @@ class ServicesController < ApplicationController
     # TODO: Save the updated service. Redirect to an appropriate page if save fails.
   end
 
-  def get_all_services
+  def get_services
     @services = Service.all
   end
 

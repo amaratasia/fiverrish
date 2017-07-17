@@ -1,5 +1,5 @@
 class PagesController < ApplicationController
   def home
-  	@gigs = Service.limit(4).order('id desc')
+  	@gigs = Service.order('id desc').limit(4)
   end
 end

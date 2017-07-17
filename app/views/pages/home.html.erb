@@ -32,7 +32,7 @@
       <div class="col-md-3">
         <div class="gig-card">
           <%= image_tag gig.image.url(:small), size: '225x150' %>
-          <div style="min-height: 70px;">
+          <div class="gig-card-details">
             <h4>
               <%= link_to gig.title, service_path(gig)%>
             </h4>

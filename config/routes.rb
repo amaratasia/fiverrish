@@ -3,7 +3,7 @@ Rails.application.routes.draw do
   root 'pages#home'
   resources :users, only: [:show]
   resources :services do
-    get :get_all_services, :on => :collection
+    get :get_services, :on => :collection
   end
 
   resources :services do
@@ -13,6 +13,7 @@ Rails.application.routes.draw do
   resources :orders, only: [:show]
 
   get '/user_orders' => 'orders#user_orders'
+  get '/get_services' => 'services#get_services'
 
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
