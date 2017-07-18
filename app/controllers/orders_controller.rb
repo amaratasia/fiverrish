@@ -2,7 +2,9 @@ class OrdersController < ApplicationController
   before_action :authenticate_user!
 
   def create
-    Order.create!(order_params)
+    order_data = order_params
+    order_data['total_price'] = order_data['price'].to_i * order_data['quantity'].to_i
+    Order.create!(order_data)
     begin
       customer = Stripe::Customer.create(
         :email => params["stripeEmail"],

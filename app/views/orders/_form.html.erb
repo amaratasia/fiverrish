@@ -44,7 +44,7 @@
                   });
                    document.getElementById('btn-buy').addEventListener('click', function(e) {
                     handler.open({
-                      name: 'Fiverrish',
+                      name: 'Fiverrish <%= Rails.env %>',
                       email: "<%= current_user.email %>",
                       currency: "INR",
                       amount: <%= @service.price %> * $('#order_quantity')[0].value * 100
