@@ -2,11 +2,22 @@ class OrdersController < ApplicationController
   before_action :authenticate_user!
 
   def create
-    # TODO: Create a new order for the spcified user/service.
-    # Redirect to an appropriate page if save fails.
-    params = order_params
-    params[:total_price]  = params[:price].to_i * params[:quantity].to_i
-    Order.create!(params)
+    Order.create!(order_params)
+    begin
+      customer = Stripe::Customer.create(
+        :email => params["stripeEmail"],
+        :source  => params["stripeToken"]
+      )
+      charge = Stripe::Charge.create(
+        :customer    => customer.id,
+        :amount      => params['order']['price'].to_i * params['order']['quantity'].to_i * 100,
+        :description => 'Customer Order',
+        :currency    => 'inr'
+      )
+
+    rescue Stripe::CardError => e
+      flash[:error] = e.message
+    end
     redirect_to '/user_orders'
   end
 
@@ -19,5 +30,4 @@ class OrdersController < ApplicationController
   	params[:order][:user_id] = current_user.id
   	params.require(:order).permit(:service_id, :price, :quantity, :user_id)
   end
-
 end

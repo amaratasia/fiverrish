@@ -3,8 +3,11 @@
     <%= form_for ([@service, @service.orders.new]) do |f| %>
       <%= f.hidden_field :service_id, value: @service.id %>
       <%= f.hidden_field :price, value: @service.price %>
+      <script src="https://checkout.stripe.com/checkout.js"></script>
+      <%= hidden_field_tag 'stripeToken' %>
+      <%= hidden_field_tag 'stripeEmail' %>  
       <center>
-        <%= f.submit "Order Now (Rs. #{@service.price})", class: "btn btn-primary btn-lg btn-order" %>
+        <%= f.submit "Order Now", id: "btn-buy", class: "btn btn-primary btn-lg btn-order" %>
       </center>
       <hr>
       <h5 class="pull-left">
@@ -24,10 +27,29 @@
   </div>
 </div>
 
+
 <script type="text/javascript">
   $(document).ready(function() {
      $("select").bind("change",function() {
-       $('.btn-order').html('Order Now - ' + $("select option:selected").html());
+       // $('.btn-order').html('Order Now - ' + $("select option:selected").html());
+       $('#pay_with_card').attr("data-amount", ($('#order_quantity')[0].value * 1.00 * <%=@service.price%>));
      });
+      var handler = StripeCheckout.configure({
+                    key: '<%= Rails.configuration.stripe[:publishable_key] %>',
+                    token: function(token, arg) {
+                      document.getElementById("stripeToken").value = token.id;
+                      document.getElementById("stripeEmail").value = token.email;
+                      document.getElementById("new_order").submit();
+                    }
+                  });
+                   document.getElementById('btn-buy').addEventListener('click', function(e) {
+                    handler.open({
+                      name: 'Fiverrish',
+                      email: "<%= current_user.email %>",
+                      currency: "INR",
+                      amount: <%= @service.price %> * $('#order_quantity')[0].value * 100
+                  });
+                  e.preventDefault();
+                 })
  })
 </script>
