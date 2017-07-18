@@ -2,6 +2,10 @@ class OrdersController < ApplicationController
   before_action :authenticate_user!
 
   def create
+    order_data = order_params
+    order_data['total_price'] = order_data['price'].to_i * order_data['quantity'].to_i
+    Order.create!(order_data)
+
     Order.create!(order_params)
     begin
       customer = Stripe::Customer.create(
@@ -28,6 +32,7 @@ class OrdersController < ApplicationController
 
   def order_params
   	params[:order][:user_id] = current_user.id
+    params[:order][:total_price] = params[:order]['price'].to_i * params[:order]['quantity'].to_i
   	params.require(:order).permit(:service_id, :price, :quantity, :user_id)
   end
 end
