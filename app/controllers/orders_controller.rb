@@ -29,6 +29,6 @@ class OrdersController < ApplicationController
   def order_params
   	params[:order][:user_id] = current_user.id
     params[:order][:total_price] = params[:order]['price'].to_i * params[:order]['quantity'].to_i
-  	params.require(:order).permit(:service_id, :price, :quantity, :user_id)
+  	params.require(:order).permit(:service_id, :price, :quantity, :user_id, :total_price)
   end
 end
