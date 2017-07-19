@@ -1,5 +1,5 @@
 class ServicesController < ApplicationController
-  before_action :authenticate_user!, except: [:show, :get_all_services]
+  before_action :authenticate_user!, except: [:show, :get_services]
   before_action :set_service, only: [:show, :edit, :update]
   def index
     @services = current_user.services
